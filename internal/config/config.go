@@ -31,6 +31,15 @@ func write(cfg Config) error {
 		return err
 	}
 	defer file.Close()
+	data, err := json.Marshal(cfg)
+	if err != nil {
+		return err
+	}
+	_, err = file.Write(data)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func Read() (Config, error) {
@@ -49,13 +58,18 @@ func Read() (Config, error) {
 		return Config{}, err
 	}
 	config := Config{}
-	err = json.Unmarshal(data, &data)
+	err = json.Unmarshal(data, &config)
 	if err != nil {
 		return Config{}, err
 	}
 	return config, nil
 }
 
-func (c Config) SetUser() error {
+func (c Config) SetUser(username string) error {
+	c.CurrentUserName = username
+	err := write(c)
+	if err != nil {
+		return err
+	}
 	return nil
 }
