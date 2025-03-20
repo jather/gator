@@ -1,8 +1,11 @@
 package main
 
 import (
+	"context"
+	"database/sql"
 	"errors"
 	"fmt"
+	"log"
 )
 
 func handlerLogin(s *state, cmd command) error {
@@ -10,9 +13,18 @@ func handlerLogin(s *state, cmd command) error {
 		return errors.New("expecting one argument")
 	}
 	username := cmd.arguments[0]
-	err := s.config.SetUser(username)
+
+	//check if user exists
+	_, err := s.db.GetUser(context.Background(), username)
 	if err != nil {
-		return err
+		if err == sql.ErrNoRows {
+			return errors.New("username hasn't been registered")
+		}
+	}
+	// set username
+	err = s.cfg.SetUser(username)
+	if err != nil {
+		log.Fatal(err)
 	}
 	fmt.Printf("Username has been set to %s\n", username)
 	return nil
