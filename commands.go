@@ -17,11 +17,11 @@ func (c *commands) register(name string, f func(*state, command) error) {
 }
 
 func (c *commands) run(s *state, cmd command) error {
-	function, ok := c.commands[cmd.name]
+	handler, ok := c.commands[cmd.name]
 	if !ok {
 		return errors.New("command not found")
 	}
-	err := function(s, cmd)
+	err := handler(s, cmd)
 	if err != nil {
 		return err
 	}
