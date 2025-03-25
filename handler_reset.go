@@ -16,4 +16,5 @@ func handlerReset(s *state, cmd command) error {
 	}
 	fmt.Println("user table reset in database")
 	return nil
+
 }
