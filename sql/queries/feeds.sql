@@ -14,7 +14,8 @@ INSERT INTO
     feeds (id, created_at, updated_at, name, url, user_id)
 VALUES
     ($1, $2, $3, $4, $5, $6)
-    RETURNING *;
+RETURNING
+    *;
 
 -- name: CreateFeedFollow :one
 WITH
@@ -23,7 +24,8 @@ WITH
             feeds_follow (id, created_at, updated_at, user_id, feed_id)
         VALUES
             ($1, $2, $3, $4, $5)
-            RETURNING *
+        RETURNING
+            *
     )
 SELECT
     inserted_feed_follow.*,
@@ -43,7 +45,26 @@ WHERE
     url = $1;
 
 -- name: GetFeedFollowsForUser :many
-SELECT feeds_follow.*, users.name as user_name, feeds.name as feed_name FROM feeds_follow
-LEFT JOIN users on feeds_follow.user_id = users.id
-LEFT JOIN feeds on feeds_follow.feed_id = feeds.id
-WHERE users.name = $1;
+SELECT
+    feeds_follow.*,
+    users.name as user_name,
+    feeds.name as feed_name
+FROM
+    feeds_follow
+    LEFT JOIN users on feeds_follow.user_id = users.id
+    LEFT JOIN feeds on feeds_follow.feed_id = feeds.id
+WHERE
+    users.name = $1;
+
+-- name: DeleteFeedFollow :exec
+DELETE FROM feeds_follow
+WHERE
+    feeds_follow.user_id = $1
+    AND feeds_follow.feed_id IN (
+        SELECT
+            id
+        from
+            feeds
+        WHERE
+            feeds.url = $2
+    );
