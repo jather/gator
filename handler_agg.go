@@ -1,15 +1,25 @@
 package main
 
 import (
-	"context"
+	"errors"
 	"fmt"
+	"time"
 )
 
 func handlerAgg(s *state, cmd command) error {
-	feed, err := fetchFeed(context.Background(), "https://www.wagslane.dev/index.xml")
+	if len(cmd.arguments) != 1 {
+		return errors.New("expecting 1 argument")
+	}
+	time_between_reqs := cmd.arguments[0]
+	fmt.Println("Collecting feeds every", time_between_reqs)
+
+	interval, err := time.ParseDuration(time_between_reqs)
 	if err != nil {
 		return err
 	}
-	fmt.Println(feed)
-	return nil
+	ticker := time.NewTicker(interval)
+
+	for ; ; <-ticker.C {
+		scrapeFeeds(s)
+	}
 }
