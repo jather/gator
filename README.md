@@ -47,8 +47,8 @@ goose postgres "postgres://postgres:<your postgres password>@localhost:5432/gato
 - agg <interval> - fetch new posts every set interval. EG. "agg 20s" "agg 10m". Intended to have this running in the background in a different terminal
 - browse <limit optional> - view posts for current user, the number of posts shown is up to the limit. default 2
 
-##Possible improvements
-shell script for installlation
-extending browse functionality- pagination, filtering, search
-TUI?
-service manager to keep agg command running
+## Possible improvements
+- shell script for installlation
+- extending browse functionality- pagination, filtering, search
+- TUI?
+- service manager to keep agg command running
