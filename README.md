@@ -7,15 +7,15 @@ Mostly a project to learn how to use databases and queries in a program. Also be
 ### Install postgres and Go
 Requires postgresql and Go installed on your machine. 
 
-###Install Goose
+### Install Goose
 ```go install github.com/pressly/goose/v3/cmd/goose@latest```
 You'll also need to install goose for the database migration when setting up. 
 
-###Install Gator
+### Install Gator
 ```go install```
 Run "go install" to install gator and be able to run the commands. 
 
-###Configure .gatorconfig.json
+### Configure .gatorconfig.json
 Requires a ".gatorconfig.json" in your home directory, with the following contents:
 ```
 {"dburl":"<username>://<postgress_password>:@localhost:5432/gator?sslmode=disable","current_user_name":""}
