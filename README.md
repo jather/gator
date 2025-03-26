@@ -35,17 +35,17 @@ goose postgres "postgres://postgres:<your postgres password>@localhost:5432/gato
 ```
 ## Use
 ### Commands:
-register <user> - create user and login as user
-login <user> - change user
-reset - reset database
-users- list users
-addfeed <name> <url> - add a feed and automatically follow for current user
-feeds - list all feeds
-follow <url> - follow an added feed for this user
-unfollow <url> - unfollow feed for this user
-following - list followed feeds for this user
-agg <interval> - fetch new posts every set interval. EG. "agg 20s" "agg 10m". Intended to have this running in the background in a different terminal
-browse <limit optional> - view posts for current user, the number of posts shown is up to the limit. default 2
+- register <user> - create user and login as user
+- login <user> - change user
+- reset - reset database
+- users- list users
+- addfeed <name> <url> - add a feed and automatically follow for current user
+- feeds - list all feeds
+- follow <url> - follow an added feed for this user
+- unfollow <url> - unfollow feed for this user
+- following - list followed feeds for this user
+- agg <interval> - fetch new posts every set interval. EG. "agg 20s" "agg 10m". Intended to have this running in the background in a different terminal
+- browse <limit optional> - view posts for current user, the number of posts shown is up to the limit. default 2
 
 ##Possible improvements
 shell script for installlation
