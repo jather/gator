@@ -17,7 +17,8 @@ Run "go install" to install gator and be able to run the commands.
 
 ###Configure .gatorconfig.json
 Requires a ".gatorconfig.json" in your home directory, with the following contents:
-```{"dburl":"<username>://<postgress_password>:@localhost:5432/gator?sslmode=disable","current_user_name":""}
+```
+{"dburl":"<username>://<postgress_password>:@localhost:5432/gator?sslmode=disable","current_user_name":""}
 ```
 replace <username> with postgres user
 replace <postgress_password> with your postgress password. 5432 is the default port for postgres.
