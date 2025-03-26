@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/jather/rss-feed-aggregator/internal/database"
+	"github.com/jather/gator/internal/database"
 )
 
 func handlerUnfollow(s *state, cmd command, user database.User) error {

@@ -1,4 +1,4 @@
-module github.com/jather/rss-feed-aggregator
+module github.com/jather/gator
 
 go 1.23.4
 

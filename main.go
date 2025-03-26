@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/jather/rss-feed-aggregator/internal/config"
-	"github.com/jather/rss-feed-aggregator/internal/database"
+	"github.com/jather/gator/internal/config"
+	"github.com/jather/gator/internal/database"
 	_ "github.com/lib/pq"
 )
 

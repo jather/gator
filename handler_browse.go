@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/jather/rss-feed-aggregator/internal/database"
+	"github.com/jather/gator/internal/database"
 )
 
 func handlerBrowse(s *state, cmd command, user database.User) error {

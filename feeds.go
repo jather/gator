@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/jather/rss-feed-aggregator/internal/database"
+	"github.com/jather/gator/internal/database"
 	"github.com/lib/pq"
 )
 
@@ -43,7 +43,7 @@ func fetchFeed(ctx context.Context, feedURL string) (*RSSFeed, error) {
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("User-Agent", "rss-feed-aggregator")
+	req.Header.Set("User-Agent", "gator")
 	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
